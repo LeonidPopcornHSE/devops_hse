@@ -1,7 +1,7 @@
 class Employee:
     emp_count = 0
     projects = {}
-    # add projects 
+    # add projects in office
 
     def __init__(self, name, position, salary):
         self.name = name
@@ -23,6 +23,12 @@ class Employee:
             Employee.projects[name_project] = set([self.name])
         else:
             Employee.projects[name_project].add(self.name)
+
+    def del_employee_from_project(self, name_project):
+        if name_project not in Employee.projects:
+            raise Exception
+        else:
+            Employee.projects[name_project].discard(self.name)
 
     @classmethod
     def info_projects(cls):
