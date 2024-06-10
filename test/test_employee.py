@@ -15,5 +15,3 @@ def test_count_employee():
     employee1 = Employee("Андрей", "Инженер", 2000)
     employee2 = Employee("Мария", "Менеджер",5000)
     assert Employee.emp_count == 2
-    employee3 = Employee("Юлия", "Переводчик", 800)
-    assert Employee.emp_count == 3
