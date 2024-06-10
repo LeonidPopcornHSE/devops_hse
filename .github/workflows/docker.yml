@@ -35,12 +35,8 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
-    - name: Build and push
-      uses: docker/build-push-action@v1
-      with:
-        context: .
-        push: true
-        tags: leonidpopcorn/devops_hse:latest
+    - name: Build docker image
+      run: docker build -t leonidpopcorn/devops_hse:${{ github.sha }} .
 
-    - name: Image digest
-      run: docker image inspect --format='{{index .RepoDigests 0}}'leonidpopcorn/devops_hse:latest
+    - name: Push docker image
+      run: docker push leonidpopcorn/devops_hse:${{ github.sha }}
